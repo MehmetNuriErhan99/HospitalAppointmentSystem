@@ -1,5 +1,4 @@
-﻿
-namespace HospitalAppointmentSystem.Repository
+﻿namespace HospitalAppointmentSystem.Repository.Abstract
 {
     public interface IRepository<T> where T : class
     {

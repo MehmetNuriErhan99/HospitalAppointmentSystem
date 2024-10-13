@@ -2,8 +2,10 @@
 
 public enum  Branch
 {
-    GeneralPractice,
-    Pediatrics,
+    Cardiology,
     Dermatology,
-    Cardiology
+    Neurology,
+    Pediatrics,
+    Psychiatry,
+    BrainMrain
 }

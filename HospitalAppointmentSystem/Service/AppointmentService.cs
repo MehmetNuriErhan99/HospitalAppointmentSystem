@@ -1,6 +1,6 @@
 ﻿using HospitalAppointmentSystem.Models.Dtos;
 using HospitalAppointmentSystem.Models;
-using HospitalAppointmentSystem.Repository;
+using HospitalAppointmentSystem.Repository.Abstract;
 
 namespace HospitalAppointmentSystem.Service
 {
