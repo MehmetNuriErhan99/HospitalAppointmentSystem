@@ -1,6 +1,7 @@
-﻿using HospitalAppointmentSystem.Data;
+﻿
 using HospitalAppointmentSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -38,7 +39,7 @@ public class AppointmentController : ControllerBase
         _context.Appointments.Add(appointment);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetAppointments), new { id = appointment.PatientId }, appointment);
+        return CreatedAtAction(nameof(GetAppointments), new { id = appointment.p }, appointment);
     }
 
     [HttpDelete("{id}")]
