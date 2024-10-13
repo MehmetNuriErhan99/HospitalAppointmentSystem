@@ -3,7 +3,7 @@ using HospitalAppointmentSystem.Repository.Abstract;
 
 namespace HospitalAppointmentSystem.Service.Concretes
 {
-
+    namespace HospitalAppointment.WebApi.Services.Concretes;
 
     public class DoctorService : IDoctorService
     {
@@ -13,10 +13,7 @@ namespace HospitalAppointmentSystem.Service.Concretes
         {
             _doctorRepository = doctorRepository;
         }
-        public Doctor AddDoctor(Doctor user)
-        {
-            return _doctorRepository.Add(user);
-        }
+        public Doctor AddDoctor(Doctor user) => _doctorRepository.Add(user);
 
         public Doctor DeleteDoctor(int id)
         {
@@ -43,4 +40,3 @@ namespace HospitalAppointmentSystem.Service.Concretes
             return _doctorRepository.Update(user);
         }
     }
-}

@@ -1,69 +1,57 @@
-﻿using HospitalAppointment.WebApi;
-using HospitalAppointmentSystem.Models;
+﻿using HospitalAppointmentSystem.Models;
 using HospitalAppointmentSystem.Models.Enums;
 using HospitalAppointmentSystem.Repository.Abstract;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HospitalAppointmentSystem.Repository.Concretes
-
-
 {
     public class EfDoctorRepository : IDoctorRepository
     {
-        private BaseDbContext _context;
+        private readonly HospitalContext _context;
 
-        public EfDoctorRepository(BaseDbContext context)
+        public EfDoctorRepository(HospitalContext context)
         {
             _context = context;
         }
 
-        public Doctor Add(Doctor user)
+        public async Task Add(Doctor entity)
         {
-            _context.Doctors.Add(user);
-            _context.SaveChanges();
-
-            return user;
+            await _context.Doctors.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Doctor Delete(int id)
+        public async Task Delete(int id)
         {
-            Doctor doctor = _context.Doctors.Find(id);
-            _context.Doctors.Remove(doctor);
-            _context.SaveChanges();
-
-            return doctor;
-
+            var doctor = await _context.Doctors.FindAsync(id);
+            if (doctor != null)
+            {
+                _context.Doctors.Remove(doctor);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public List<Doctor> GetAll()
+        public async Task<IEnumerable<Doctor>> GetAll()
         {
-            List<Doctor> doctors = _context.Doctors.ToList();
-            return doctors;
+            return await _context.Doctors.ToListAsync();
         }
 
-        public Doctor? GetById(int id)
+        public async Task<Doctor> GetById(int id)
         {
-            Doctor doctor = _context.Doctors.Find(id);
-
-            return doctor;
+            return await _context.Doctors.FindAsync(id);
         }
 
-        public List<Doctor> GetDoctorsByBranch(BranchType branch)
+        public async Task Update(Doctor entity)
         {
-            List<Doctor> doctors = _context.Doctors.Where(d => d.Branch == branch).ToList();
-            return doctors;
+            _context.Doctors.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
         public List<Doctor> GetDoctorsByBranch(Branch branch)
         {
-            throw new NotImplementedException();
-        }
-
-        public Doctor Update(Doctor user)
-        {
-            _context.Doctors.Update(user);
-            _context.SaveChanges();
-
-            return user;
+            return _context.Doctors.Where(d => d.Branch == branch).ToList();
         }
     }
 }
+    

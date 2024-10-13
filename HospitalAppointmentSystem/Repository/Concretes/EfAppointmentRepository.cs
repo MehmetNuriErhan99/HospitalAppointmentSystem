@@ -53,5 +53,35 @@ namespace HospitalAppointmentSystem.Repository.Concretes
             _context.SaveChanges();
             return user;
         }
+
+        Task<Appointment> IAppointmentRepository.Add(Appointment appointment)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Appointment> IAppointmentRepository.Delete(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Appointment>> IAppointmentRepository.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Appointment>> IAppointmentRepository.GetAppointmentsByDoctorId(int doctorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Appointment?> IAppointmentRepository.GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Appointment> IAppointmentRepository.Update(Appointment appointment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

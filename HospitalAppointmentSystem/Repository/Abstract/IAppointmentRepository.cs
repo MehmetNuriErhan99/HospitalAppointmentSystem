@@ -1,8 +1,11 @@
 ﻿using HospitalAppointmentSystem.Models;
 
-namespace HospitalAppointmentSystem.Repository.Abstract;
-
-public interface IAppointmentRepository : IRepository<Appointment, Guid>
+public interface IAppointmentRepository
 {
-    List<Appointment> GetAppointmentsByDoctorId(int doctorId);
+    Task<Appointment> Add(Appointment appointment);
+    Task<Appointment> Delete(Guid id);
+    Task<List<Appointment>> GetAll();
+    Task<Appointment?> GetById(Guid id);
+    Task<List<Appointment>> GetAppointmentsByDoctorId(int doctorId);
+    Task<Appointment> Update(Appointment appointment);
 }

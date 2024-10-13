@@ -1,13 +1,12 @@
 ﻿namespace HospitalAppointmentSystem.Repository.Abstract
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T, TKey> where T : class
     {
         Task<IEnumerable<T>> GetAll();
-        Task<T> GetById(int id);
+        Task<T> GetById(TKey id);
         Task Add(T entity);
         Task Update(T entity);
-        Task Delete(int id);
-        Task Delete(Guid ıd);
+        Task Delete(TKey id);
     }
 
 }

@@ -1,6 +1,5 @@
-﻿namespace HospitalAppointmentSystem.Repository.Abstract
+﻿namespace HospitalAppointmentSystem.Repository.Abstract;
+
+public class BranchType
 {
-    public class BranchType
-    {
-    }
 }
